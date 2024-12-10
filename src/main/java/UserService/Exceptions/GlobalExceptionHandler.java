@@ -28,4 +28,12 @@ public class GlobalExceptionHandler {
 		map.put("Status", "Failure");
 		return new ResponseEntity<Map<String,Object>>(map,HttpStatus.NOT_FOUND);
 	}
+	@ExceptionHandler(ProfilePictureNotFoundException.class)
+	public ResponseEntity<Map<String,String>> handlerProfilePictureNotFoundException(ProfilePictureNotFoundException ex){
+		String message=ex.getMessage();
+		Map<String,String> map=new HashMap<>();
+		map.put("message", message);
+		map.put("status", "Failure");
+		return new ResponseEntity<Map<String,String>>(map,HttpStatus.NOT_FOUND);
+	}
 }
